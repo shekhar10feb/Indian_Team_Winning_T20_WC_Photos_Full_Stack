@@ -29,17 +29,9 @@ app.use(logger);
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-const buildPath = path.join(__dirname, 'build');
-
-app.use(express.static(buildPath))
 app.use(express.json())
 
 // Define Routes
 app.use('/api', routes);
-
-// gets the static files from the build folder
-app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'))
-  })
 
 export default app;
